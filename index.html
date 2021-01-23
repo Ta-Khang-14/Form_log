@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <form action="" class="form" id="form-1">
+         <h3>Đăng kí thành viên</h3>
+         <P class="desc">Chào mừng bạn đến với cộng đồng của chúng tôi!!</P>
+         <div class="whiteSpace"></div>
+         <div class="form-group">
+            <label for="userName" class="form-label">Nhập tên đăng nhâp: </label>
+            <input type="text" name='userName' id="userName" placeholder="VD: TaKhang_14">
+            <span class="form-message"></span>
+        </div>
+        <div class="form-group ">
+            <label for="email" class="form-label">Nhập email: </label>
+            <input type="text" name='email' id="email" placeholder="VD: abcxyz@gmail.com">
+            <span class="form-message"></span>
+        </div>
+        <div class="form-group">
+            <label for="password" class="form-label">Nhập tên đăng nhâp: </label>
+            <input type="password" name='password' id="password" placeholder="VD: 123456">
+            <span class="form-message"></span>
+        </div>
+        <div class="form-group">
+            <label for="password-confirm" class="form-label">Nhập tên đăng nhâp: </label>
+            <input type="password" name='password-confirm' id="password-confirm" placeholder="VD: 123456">
+            <span class="form-message"></span>
+        </div>
+        <div class="form-check">
+            <input type="checkbox" name='agree-rules' class="agree-rules">
+            <label for="agree-rules">Tôi đồng ý với các điều khoản!</label>
+        </div>
+        <a href="#">Đăng kí</a>
+    </form>
+    <script src="app.js"></script>
+    <script>
+        validators({
+            form: '#form-1',
+            rules: [
+                validators.isRequired('#userName'),
+                validators.isRequired('#email'),
+                validators.isEmail('#email'),
+                validators.isRequired('#password'),
+                validators.isPassWord('#password',6),
+                validators.isCheckPassword('#password-confirm', function(){
+                    return document.querySelector('#form-1 #password').value;
+                })               
+            ]
+        })
+    </script>
+</body>
+</html>
